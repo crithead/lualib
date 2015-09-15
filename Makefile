@@ -53,6 +53,10 @@ clean:
 	@rm -f $(SHAREDOBJ)
 
 # Run the test programs
+#
+# Note: You may need to set "export LD_LIBRARY_PATH=$PWD" so the test program
+# can load the library.
+#
 .PHONY: test
 test:
 	@echo "--- Running C library test"

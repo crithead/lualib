@@ -1,0 +1,21 @@
+README
+======
+
+$ make
+$ make test
+$ lua probe.lua
+
+For testing purposes set the loader path thusly:
+
+  $ export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
+
+
+To Do
+-----
+
+* Figure out how to get a reference to the loaded library in the global
+  namespace.  The functions are accessible in "_G.package.loaded.dicebag".
+
+* Learn how to call dicebag_init() when the library is loaded, instead of
+  having an explicit call.
+

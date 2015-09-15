@@ -8,6 +8,11 @@
 
 #include "dicebag.h"
 
+static int l_dicebag_init( lua_State *L ) {
+    dicebag_init();
+    return 0;
+}
+
 static int l_dicebag_roll( lua_State *L ) {
     lua_pushinteger( L, dicebag_roll( luaL_checkinteger( L, 1 ) ) );
     return 1;
@@ -33,6 +38,7 @@ static int l_dicebag_best( lua_State *L ) {
 }
 
 static const luaL_Reg dicebaglib[] = {
+    { "init",  l_dicebag_init },
     { "roll",  l_dicebag_roll },
     { "range", l_dicebag_range },
     { "dice",  l_dicebag_dice },
@@ -44,7 +50,18 @@ static const luaL_Reg dicebaglib[] = {
  * Open dicebag library
  */
 LUAMOD_API int luaopen_dicebag( lua_State *L ) {
-  luaL_newlib( L, dicebaglib );
-  return 1;
+#if 0
+	luaL_newlib( L, dicebaglib );
+#else
+	luaL_newlibtable( L, dicebaglib );
+	luaL_setfuncs( L, dicebaglib, 0 );
+#endif //0
+/* How do I get a reference to the loaded library in the the global namespace
+ * without manually putting it there?
+ *
+ * Can I put ia reference in the global namespace that points to
+ * "_G.package.loaded.dicebag" ?
+ */
+    return 1;
 }
 
