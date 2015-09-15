@@ -17,9 +17,6 @@ dicebag = _G.package.loaded.dicebag
 print( "--- Library functions" )
 
 -- Call functions
-print( "dicebag.init()" )
-dicebag.init()
-
 n = dicebag.roll( 100 )
 print( "dicebag.roll( 100 ) ->", n )
 
@@ -29,11 +26,14 @@ print( "dicebag.range( 1000, 2000 ) ->", n )
 n = dicebag.dice( 10, 6 )
 print( "dicebag.dice( 10, 6 ) ->", n )
 
-m = {}
-for i = 1, 6 do
-	m[#m + 1] = dicebag.best( 3, 4, 6 )
+-- Roll a bunch of dice
+print( "dicebag.best( 3, 4, 6 )" )
+for j = 1, 10 do
+	m = {}
+	for i = 1, 6 do
+		m[#m + 1] = dicebag.best( 3, 4, 6 )
+	end
+	s = string.format( "%d\t%d\t%d\t%d\t%d\t%d", m[1], m[2], m[3], m[4], m[5], m[6] )
+	print( s )
 end
-s = string.format( "%d\t%d\t%d\t%d\t%d\t%d", m[1], m[2], m[3], m[4], m[5], m[6] )
-print( "dicebag.best(3, 4, 6 )" )
-print( s )
 
