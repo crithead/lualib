@@ -8,6 +8,9 @@
 
 #include "dicebag.h"
 
+#define DICEBAG_LIBNAME "dicebag"
+
+
 static int l_dicebag_roll( lua_State *L ) {
     lua_pushinteger( L, dicebag_roll( luaL_checkinteger( L, 1 ) ) );
     return 1;
@@ -49,6 +52,8 @@ LUAMOD_API int luaopen_dicebag( lua_State *L ) {
 #else
 	luaL_newlibtable( L, dicebaglib );
 	luaL_setfuncs( L, dicebaglib, 0 );
+	lua_pushvalue( L, -1 );
+	lua_setglobal( L, DICEBAG_LIBNAME );
 	/* Initialize the library when it is loaded */
 	dicebag_init();
 #endif //0

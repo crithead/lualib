@@ -4,8 +4,6 @@
  * The Lua library interface to the dicebag library.
  */
 
-#include "ldicebag.h"
-
 /**
  * Open dicebag library
  */

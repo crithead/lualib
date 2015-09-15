@@ -59,8 +59,10 @@ clean:
 #
 .PHONY: test
 test:
-	@echo "--- Running C library test"
+	@echo "=== Running C library test"
 	./$(EXEC)
-	@echo "--- Running Lua library test"
+	@echo "=== Running Lua library test"
 	lua test.lua
+	@echo "=== Rolling up some characters"
+	lua rollchars.lua
 
