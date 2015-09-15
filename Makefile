@@ -29,7 +29,7 @@ LIBS = -ldicebag -llua5.2
 
 all: $(EXEC) lualib
 
-$(EXEC): $(OBJECTS) $(DEPENDS) $(SHAREDOBJ)
+$(EXEC): $(OBJECTS) $(SHAREDOBJ)
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJECTS) $(LIBS) -L.
 
 $(SHAREDOBJ): $(LIBOBJ)
