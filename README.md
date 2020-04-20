@@ -1,7 +1,9 @@
 # README
 
-This is an example project that demonstrates how to create a Lua 5.2 extension
+This is an example project that demonstrates how to create a Lua extension
 library.  It makes functions from the C library "dicebag" available in Lua.
+
+Tested with Lua 5.2 and 5.3.
 
 ## Build & Run
 
