@@ -1,4 +1,4 @@
-# Makefile to create and test a Lua 5.2 library.
+# Makefile to create and test a Lua 5.2/5.3 library.
 # It creates a shared object with the requisite Lua import calls.
 #
 # The problem is that the library functions are not visible inside a Lua
@@ -17,15 +17,17 @@ LIBSRC += ldicebag.c
 
 LIBOBJ := $(LIBSRC:.c=.o)
 
-# This is the shared object that is laoded by the Lua interpreter.
+# This is the shared object that is loaded by the Lua interpreter.
 SHAREDOBJ = libdicebag.so
 
 # This is the C test programs for dicebag.c
 EXEC = ctest
 
-LIBINC = -I /usr/include/lua5.2
+#LIBINC := -I /usr/include/lua5.2
+LIBINC := -I /usr/include/lua5.3
 
-LIBS = -ldicebag -llua5.2
+#LIBS = -ldicebag -llua5.2
+LIBS = -ldicebag -llua5.3
 
 all: $(EXEC) lualib
 
